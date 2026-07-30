@@ -1,21 +1,20 @@
-const boton=document.getElementById("startButton");
+const boton = document.getElementById("startButton");
 
-const terminal=document.getElementById("terminal");
+const terminal = document.getElementById("terminal");
 
-const foto=document.getElementById("photo");
+const foto = document.getElementById("photo");
 
-const historia=document.getElementById("story");
-
-
-boton.onclick=()=>{
-
-boton.style.display="none";
-
-terminal.style.display="block";
+const historia = document.getElementById("story");
 
 
-let texto=
+boton.onclick = () => {
 
+    boton.style.display = "none";
+
+    terminal.style.display = "block";
+
+
+    let texto = 
 `Inicializando...
 
 ██████████████ 100%
@@ -37,38 +36,36 @@ que no puede dejar de pensar
 en vos...`;
 
 
-let i=0;
+    let i = 0;
 
-terminal.innerHTML="";
-
-
-let maquina=setInterval(()=>{
-
-terminal.innerHTML+=texto.charAt(i);
-
-i++;
+    terminal.innerHTML = "";
 
 
-if(i==texto.length){
+    let maquina = setInterval(() => {
 
-clearInterval(maquina);
+        terminal.innerHTML += texto.charAt(i);
 
-
-setTimeout(()=>{
-
-terminal.style.display="none";
-
-foto.style.display="block";
+        i++;
 
 
-// Nueva escena
+        if(i == texto.length){
 
-setTimeout(()=>{
+            clearInterval(maquina);
 
-historia.style.display="block";
 
-let mensaje=
+            setTimeout(() => {
 
+                terminal.style.display = "none";
+
+                foto.style.display = "block";
+
+
+                setTimeout(() => {
+
+                    historia.style.display = "block";
+
+
+                    let mensaje = 
 `Dicen que en algún lugar del océano
 existe una sirena que guarda un secreto...
 
@@ -85,34 +82,77 @@ es solo una forma de recordarte
 lo increíble que sos ❤️`;
 
 
-let j=0;
+                    let j = 0;
 
-historia.innerHTML="";
-
-
-let escribir=setInterval(()=>{
-
-historia.innerHTML+=mensaje.charAt(j);
-
-j++;
+                    historia.innerHTML = "";
 
 
-if(j==mensaje.length){
+                    let escribir = setInterval(() => {
 
-clearInterval(escribir);
+                        historia.innerHTML += mensaje.charAt(j);
 
-}
-
-},45);
+                        j++;
 
 
-},2500);
+                        if(j == mensaje.length){
+
+                            clearInterval(escribir);
 
 
-},1800);
+                            setTimeout(() => {
 
-}
 
-},28);
+                                historia.innerHTML +=
 
-}
+`
+<div class="final">
+
+❤️
+
+<br><br>
+
+Sol...
+
+<br><br>
+
+Si esta pequeña aventura pudiera guardar un deseo,
+sería que nunca olvides lo especial que sos.
+
+<br><br>
+
+Que sigas brillando con esa energía,
+esa sonrisa y esa forma única
+de hacer que los días sean mejores.
+
+<br><br>
+
+Gracias por ser vos.
+
+✨
+
+</div>
+`;
+
+
+                            },1500);
+
+
+                        }
+
+
+                    },45);
+
+
+                },2500);
+
+
+            },1800);
+
+
+        }
+
+
+    },28);
+
+
+};
