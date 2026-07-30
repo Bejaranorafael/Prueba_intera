@@ -208,5 +208,20 @@ opacity:1;
 transform:translateY(0) scale(1);
 
 }
+  
+.final{
 
+margin-top:35px;
+
+padding-top:25px;
+
+font-size:20px;
+
+line-height:1.8;
+
+animation:aparecer 3s ease;
+
+text-align:center;
+
+}
 }
