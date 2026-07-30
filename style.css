@@ -1,61 +1,44 @@
-
 *{
-
 margin:0;
-
 padding:0;
-
 box-sizing:border-box;
-
 font-family:Arial,Helvetica,sans-serif;
-
 }
 
 body{
-
 background:#021526;
-
-overflow:hidden;
-
-height:100vh;
-
+overflow:auto;
+min-height:100vh;
 display:flex;
-
 justify-content:center;
-
-align-items:center;
-
+align-items:flex-start;
+padding-top:40px;
 color:white;
-
 }
+
 
 #background{
 
 position:fixed;
-
 width:100%;
-
 height:100%;
+top:0;
+left:0;
 
 background:
 
 linear-gradient(
-
 180deg,
-
 #00111d,
-
 #01385f,
-
 #006ba6,
-
 #0099cc
-
 );
 
 animation:mar 8s infinite alternate;
 
 }
+
 
 @keyframes mar{
 
@@ -67,14 +50,23 @@ filter:hue-rotate(18deg);
 
 }
 
+
+#particles{
+
+position:fixed;
+width:100%;
+height:100%;
+pointer-events:none;
+
+}
+
+
 .card{
 
 position:relative;
-
 z-index:10;
 
 width:92%;
-
 max-width:430px;
 
 background:rgba(255,255,255,.08);
@@ -89,7 +81,10 @@ text-align:center;
 
 box-shadow:0 0 35px rgba(0,0,0,.45);
 
+margin-bottom:40px;
+
 }
+
 
 h1{
 
@@ -99,6 +94,7 @@ font-size:30px;
 
 }
 
+
 p{
 
 font-size:18px;
@@ -106,6 +102,7 @@ font-size:18px;
 line-height:1.7;
 
 }
+
 
 button{
 
@@ -129,11 +126,13 @@ transition:.3s;
 
 }
 
+
 button:hover{
 
 transform:scale(1.05);
 
 }
+
 
 #terminal{
 
@@ -155,7 +154,10 @@ white-space:pre-line;
 
 text-align:left;
 
+box-shadow:0 0 20px #58ff58;
+
 }
+
 
 #photo{
 
@@ -169,7 +171,10 @@ border-radius:20px;
 
 box-shadow:0 0 30px black;
 
+animation:aparecer 2s ease;
+
 }
+
 
 #story{
 
@@ -180,5 +185,28 @@ margin-top:25px;
 font-size:18px;
 
 line-height:1.8;
+
+animation:aparecer 2s ease;
+
+}
+
+
+@keyframes aparecer{
+
+from{
+
+opacity:0;
+
+transform:translateY(30px) scale(.95);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0) scale(1);
+
+}
 
 }
