@@ -1,158 +1,174 @@
-const boton = document.getElementById("startButton");
+const startButton = document.getElementById("startButton");
+const inicio = document.getElementById("inicio");
 
 const terminal = document.getElementById("terminal");
+const photo = document.getElementById("photo");
 
-const foto = document.getElementById("photo");
+const analysis = document.getElementById("analysis");
+const analysisText = document.getElementById("analysisText");
+const bar = document.getElementById("bar");
 
-const historia = document.getElementById("story");
+const compileButton = document.getElementById("compileButton");
+const result = document.getElementById("result");
 
 
-boton.onclick = () => {
+startButton.onclick = () => {
 
-    boton.style.display = "none";
-
+    inicio.style.display = "none";
     terminal.style.display = "block";
 
+    const texto =
 
-    let texto = 
-`Inicializando...
+`Inicializando proyecto...
 
-██████████████ 100%
+████████████████████ 100%
 
-Buscando...
+Conectando...
 
-✔ Sol encontrada
+✔ Sistema listo
+
+Escaneando pantalla...
+
+Buscando sonrisa...
+
+⌛ Esperá unos segundos...
 
 Analizando...
 
 ✔ Sonrisa detectada
 
-✔ Gimnasio detectado
+Verificando identidad...
 
-⚠ Advertencia
+✔ Hola, Sol.
 
-Se encontró un desarrollador
-que no puede dejar de pensar
-en vos...`;
+Acceso concedido.
 
+Este proyecto fue creado
+especialmente para vos.
 
-    let i = 0;
+Disfrutá la aventura... ❤️`;
 
     terminal.innerHTML = "";
 
+    let i = 0;
 
-    let maquina = setInterval(() => {
+    const escribir = setInterval(() => {
 
         terminal.innerHTML += texto.charAt(i);
 
         i++;
 
+        if(i >= texto.length){
 
-        if(i == texto.length){
-
-            clearInterval(maquina);
-
+            clearInterval(escribir);
 
             setTimeout(() => {
 
                 terminal.style.display = "none";
 
-                foto.style.display = "block";
+                photo.style.display = "block";
+                photo.classList.add("fade");
 
+                setTimeout(mostrarAnalisis,3000);
 
-                setTimeout(() => {
-
-                    historia.style.display = "block";
-
-
-                    let mensaje = 
-`Dicen que en algún lugar del océano
-existe una sirena que guarda un secreto...
-
-Pero este secreto no está en el mar.
-
-Está en una sonrisa,
-en una mirada,
-en esos pequeños momentos
-que hacen que un día común
-se vuelva especial.
-
-Sol, esta pequeña aventura
-es solo una forma de recordarte
-lo increíble que sos ❤️`;
-
-
-                    let j = 0;
-
-                    historia.innerHTML = "";
-
-
-                    let escribir = setInterval(() => {
-
-                        historia.innerHTML += mensaje.charAt(j);
-
-                        j++;
-
-
-                        if(j == mensaje.length){
-
-                            clearInterval(escribir);
-
-
-                            setTimeout(() => {
-
-
-                                historia.innerHTML +=
-
-`
-<div class="final">
-
-❤️
-
-<br><br>
-
-Sol...
-
-<br><br>
-
-Si esta pequeña aventura pudiera guardar un deseo,
-sería que nunca olvides lo especial que sos.
-
-<br><br>
-
-Que sigas brillando con esa energía,
-esa sonrisa y esa forma única
-de hacer que los días sean mejores.
-
-<br><br>
-
-Gracias por ser vos.
-
-✨
-
-</div>
-`;
-
-
-                            },1500);
-
-
-                        }
-
-
-                    },45);
-
-
-                },2500);
-
-
-            },1800);
-
+            },1200);
 
         }
 
+    },30);
 
-    },28);
+};
 
+
+function mostrarAnalisis(){
+
+    photo.style.display="none";
+
+    analysis.style.display="block";
+    analysis.classList.add("fade");
+
+    let progreso=0;
+
+    const barra=setInterval(()=>{
+
+        progreso++;
+
+        bar.style.width=progreso+"%";
+
+        if(progreso>=100){
+
+            clearInterval(barra);
+
+            escribirAnalisis();
+
+        }
+
+    },25);
+
+}
+
+
+function escribirAnalisis(){
+
+const texto=
+
+`Estado..................... COMPLETADO
+
+Proyecto................... SOL
+
+Autor...................... Rafael
+
+Analizando variables...
+
+✔ Sonrisa................. Detectada
+
+✔ Energía................. Muy alta
+
+✔ Carisma................. Excepcional
+
+✔ Compatibilidad con café. Pendiente ☕
+
+✔ Nivel de curiosidad..... Alto
+
+Resultado:
+
+No encontré una explicación lógica
+de por qué alguien puede alegrar
+tanto un día común.
+
+Quizás algunos algoritmos
+simplemente no están hechos
+para entender ciertas personas.`;
+
+analysisText.innerHTML="";
+
+let i=0;
+
+const escribir=setInterval(()=>{
+
+analysisText.innerHTML+=texto.charAt(i);
+
+i++;
+
+if(i>=texto.length){
+
+clearInterval(escribir);
+
+compileButton.style.display="block";
+compileButton.classList.add("fade");
+
+}
+
+},20);
+
+}
+
+
+compileButton.onclick=()=>{
+
+analysis.style.display="none";
+
+result.style.display="block";
+result.classList.add("fade");
 
 };
