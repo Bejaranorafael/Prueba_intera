@@ -138,10 +138,9 @@ function mostrarAnalisis() {
 }
 
 
-function escribirAnalisis() {
+function escribirAnalisis(){
 
-    const texto =
-
+const texto = 
 `Estado..................... COMPLETADO
 
 Proyecto................... SOL
@@ -150,24 +149,19 @@ Autor...................... Rafael
 
 Analizando variables...
 
-✔ Sonrisa................ Detectada
+✔ Sonrisa detectada
 
-✔ Energía................ Muy alta
+✔ Energía muy alta
 
-✔ Carisma................ Excepcional
+✔ Carisma excepcional
 
-✔ Curiosidad............. Confirmada
+✔ Curiosidad confirmada
 
-✔ Compatibilidad con café Pendiente ☕
+Resultado del análisis:
 
-──────────────────────────────
-
-Resultado del análisis...
-
-No encontré ninguna explicación
-lógica de por qué alguien puede
-hacer que un día común
-se vuelva mucho mejor.
+No encontré una explicación lógica
+de por qué alguien puede alegrar
+tanto un día común.
 
 Algunos algoritmos
 simplemente no pueden explicar
@@ -177,26 +171,30 @@ Análisis finalizado.
 
 Esperando compilación...`;
 
-    let i = 0;
 
-    analysisText.innerHTML = "";
+analysisText.innerHTML = "";
 
-    const escribir = setInterval(() => {
+let i = 0;
 
-        analysisText.innerHTML += texto.charAt(i);
 
-        i++;
+const escribir = setInterval(()=>{
 
-        if (i >= texto.length) {
+    analysisText.innerHTML += texto.charAt(i);
 
-            clearInterval(escribir);
+    i++;
 
-            compileButton.style.display = "block";
-            compileButton.classList.add("fade");
 
-        }
+    if(i >= texto.length){
 
-    }, 20);
+        clearInterval(escribir);
+
+        compileButton.style.display = "block";
+
+    }
+
+
+},40);
+
 
 }
 
