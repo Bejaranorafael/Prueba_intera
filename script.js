@@ -132,5 +132,73 @@ function mostrarAnalisis(){
         }
 
     },25);
+ 
+}
+function escribirAnalisis(){
+
+const texto =
+
+`Estado..................... COMPLETADO
+
+Proyecto................... SOL
+
+Autor...................... Rafael
+
+Analizando variables...
+
+✔ Sonrisa................. Detectada
+
+✔ Energía................. Muy alta
+
+✔ Carisma................. Excepcional
+
+✔ Compatibilidad con café. Pendiente ☕
+
+✔ Nivel de curiosidad..... Alto
+
+Resultado del análisis:
+
+No encontré una explicación lógica
+de por qué alguien puede alegrar
+tanto un día común.
+
+Quizás algunos algoritmos
+simplemente no están hechos
+para entender ciertas personas.
+
+Sistema listo para compilar
+el resultado final.`;
+
+analysisText.innerHTML = "";
+
+let i = 0;
+
+const escribir = setInterval(() => {
+
+    analysisText.innerHTML += texto.charAt(i);
+
+    i++;
+
+    if(i >= texto.length){
+
+        clearInterval(escribir);
+
+        compileButton.style.display = "block";
+        compileButton.classList.add("fade");
+
+    }
+
+},20);
 
 }
+
+
+compileButton.onclick = () => {
+
+    analysis.style.display = "none";
+
+    result.style.display = "block";
+    result.classList.add("fade");
+
+};
+
