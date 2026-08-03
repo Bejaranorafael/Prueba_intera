@@ -17,7 +17,7 @@ startButton.onclick = () => {
     inicio.style.display = "none";
     terminal.style.display = "block";
 
-    const texto =
+    const primeraParte =
 
 `Inicializando proyecto...
 
@@ -27,15 +27,39 @@ Conectando...
 
 ✔ Sistema listo
 
-Escaneando pantalla...
+Activando reconocimiento facial...
 
-Buscando sonrisa...
+Esperando una sonrisa...`;
 
-⌛ Esperá unos segundos...
+    terminal.innerHTML = "";
 
-Analizando...
+    let i = 0;
 
-✔ Sonrisa detectada
+    const escribir = setInterval(() => {
+
+        terminal.innerHTML += primeraParte.charAt(i);
+
+        i++;
+
+        if(i >= primeraParte.length){
+
+            clearInterval(escribir);
+
+            setTimeout(() => {
+
+                const segundaParte =
+
+`
+
+📷 Capturando imagen...
+
+██████░░░░░░░░ 35%
+
+██████████░░░░ 67%
+
+██████████████ 100%
+
+🙂 Sonrisa detectada
 
 Verificando identidad...
 
@@ -48,30 +72,34 @@ especialmente para vos.
 
 Disfrutá la aventura... ❤️`;
 
-    terminal.innerHTML = "";
+                let j = 0;
 
-    let i = 0;
+                const continuar = setInterval(() => {
 
-    const escribir = setInterval(() => {
+                    terminal.innerHTML += segundaParte.charAt(j);
 
-        terminal.innerHTML += texto.charAt(i);
+                    j++;
 
-        i++;
+                    if(j >= segundaParte.length){
 
-        if(i >= texto.length){
+                        clearInterval(continuar);
 
-            clearInterval(escribir);
+                        setTimeout(() => {
 
-            setTimeout(() => {
+                            terminal.style.display = "none";
 
-                terminal.style.display = "none";
+                            photo.style.display = "block";
+                            photo.classList.add("fade");
 
-                photo.style.display = "block";
-                photo.classList.add("fade");
+                            setTimeout(mostrarAnalisis,3000);
 
-                setTimeout(mostrarAnalisis,3000);
+                        },1500);
 
-            },1200);
+                    }
+
+                },30);
+
+            },4000);
 
         }
 
@@ -82,20 +110,20 @@ Disfrutá la aventura... ❤️`;
 
 function mostrarAnalisis(){
 
-    photo.style.display="none";
+    photo.style.display = "none";
 
-    analysis.style.display="block";
+    analysis.style.display = "block";
     analysis.classList.add("fade");
 
-    let progreso=0;
+    let progreso = 0;
 
-    const barra=setInterval(()=>{
+    const barra = setInterval(() => {
 
         progreso++;
 
-        bar.style.width=progreso+"%";
+        bar.style.width = progreso + "%";
 
-        if(progreso>=100){
+        if(progreso >= 100){
 
             clearInterval(barra);
 
@@ -106,69 +134,3 @@ function mostrarAnalisis(){
     },25);
 
 }
-
-
-function escribirAnalisis(){
-
-const texto=
-
-`Estado..................... COMPLETADO
-
-Proyecto................... SOL
-
-Autor...................... Rafael
-
-Analizando variables...
-
-✔ Sonrisa................. Detectada
-
-✔ Energía................. Muy alta
-
-✔ Carisma................. Excepcional
-
-✔ Compatibilidad con café. Pendiente ☕
-
-✔ Nivel de curiosidad..... Alto
-
-Resultado:
-
-No encontré una explicación lógica
-de por qué alguien puede alegrar
-tanto un día común.
-
-Quizás algunos algoritmos
-simplemente no están hechos
-para entender ciertas personas.`;
-
-analysisText.innerHTML="";
-
-let i=0;
-
-const escribir=setInterval(()=>{
-
-analysisText.innerHTML+=texto.charAt(i);
-
-i++;
-
-if(i>=texto.length){
-
-clearInterval(escribir);
-
-compileButton.style.display="block";
-compileButton.classList.add("fade");
-
-}
-
-},20);
-
-}
-
-
-compileButton.onclick=()=>{
-
-analysis.style.display="none";
-
-result.style.display="block";
-result.classList.add("fade");
-
-};
