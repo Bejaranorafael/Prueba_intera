@@ -106,3 +106,106 @@ Disfrutá la aventura... ❤️`;
     }, 25);
 
 };
+function mostrarAnalisis() {
+
+    analysis.style.display = "block";
+    analysis.classList.add("fade");
+
+    analysisText.innerHTML = "";
+    compileButton.style.display = "none";
+    result.style.display = "none";
+
+    let progreso = 0;
+
+    bar.style.width = "0%";
+
+    const barra = setInterval(() => {
+
+        progreso++;
+
+        bar.style.width = progreso + "%";
+
+        if (progreso >= 100) {
+
+            clearInterval(barra);
+
+            escribirAnalisis();
+
+        }
+
+    }, 25);
+
+}
+
+
+function escribirAnalisis() {
+
+    const texto =
+
+`Estado..................... COMPLETADO
+
+Proyecto................... SOL
+
+Autor...................... Rafael
+
+Analizando variables...
+
+✔ Sonrisa................ Detectada
+
+✔ Energía................ Muy alta
+
+✔ Carisma................ Excepcional
+
+✔ Curiosidad............. Confirmada
+
+✔ Compatibilidad con café Pendiente ☕
+
+──────────────────────────────
+
+Resultado del análisis...
+
+No encontré ninguna explicación
+lógica de por qué alguien puede
+hacer que un día común
+se vuelva mucho mejor.
+
+Algunos algoritmos
+simplemente no pueden explicar
+ciertas personas.
+
+Análisis finalizado.
+
+Esperando compilación...`;
+
+    let i = 0;
+
+    analysisText.innerHTML = "";
+
+    const escribir = setInterval(() => {
+
+        analysisText.innerHTML += texto.charAt(i);
+
+        i++;
+
+        if (i >= texto.length) {
+
+            clearInterval(escribir);
+
+            compileButton.style.display = "block";
+            compileButton.classList.add("fade");
+
+        }
+
+    }, 20);
+
+}
+
+
+compileButton.onclick = () => {
+
+    analysis.style.display = "none";
+
+    result.style.display = "block";
+    result.classList.add("fade");
+
+};
